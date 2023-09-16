@@ -20,7 +20,6 @@ const nextFlow = (
           return fallBack()
         }
         else {
-          /** @type Number */
           const userResponse = Number(ctx.body)
           console.log(userResponse)
         }
@@ -32,7 +31,7 @@ const nextFlow = (
 const prevFlow = (
   bot.addKeyword(["anterior"])
     .addAnswer('Abracadabra anterior')
-)
+);
 
 
 // global flow
