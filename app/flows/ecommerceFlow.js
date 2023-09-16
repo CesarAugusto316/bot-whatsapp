@@ -43,13 +43,24 @@ exports.ecommerceFLow = (
       null,
       [itemsFlow]
       // {}
+
       // does not work on free whatsapp providers
       // {
-      //   button: [
+      //   buttons: [
       //     {
       //       body: '🤩 ver productos'
       //     }
       //   ]
       // }
     )
+  // .addAnswer(
+  //   'lista',
+  //   {
+  //     buttons: [
+  //       {
+  //         body: '🤩 ver productos'
+  //       }
+  //     ]
+  //   }
+  // )
 );
