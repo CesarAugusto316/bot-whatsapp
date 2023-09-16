@@ -1,4 +1,4 @@
-const { initializeBot } = require('./app/app');
+const { initChatBot } = require('./app/app');
 
 
-initializeBot();
+initChatBot();

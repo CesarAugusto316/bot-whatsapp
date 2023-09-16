@@ -5,9 +5,9 @@ const MockAdapter = require('@bot-whatsapp/database/mock');
 const { mainFlow, goodByFlow, eventsFlows, noteVoice, flowString } = require('./flows/mainFlow');
 
 
-exports.initializeBot = async () => {
+exports.initChatBot = async () => {
   const adapterDB = new MockAdapter();
-  const adapterFlow = bot.createFlow([goodByFlow, eventsFlows, noteVoice, flowString]);
+  const adapterFlow = bot.createFlow([mainFlow, goodByFlow, eventsFlows, noteVoice, flowString]);
   const adapterProvider = bot.createProvider(BaileysProvider);
 
   bot.createBot({
