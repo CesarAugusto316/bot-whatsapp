@@ -1,6 +1,40 @@
 const bot = require('@bot-whatsapp/bot');
 
 
+// subflows
+const nextFlow = (
+  bot.addKeyword(["siguiente"])
+    .addAnswer(
+      [
+        'Abracadabra, estas son las opciones del dia:',
+        '1 *gato1*',
+        '2 *gato2*',
+        '3 *gato3*',
+      ],
+
+      { capture: true }, // waits for user anwswer, before passing to the next answer
+
+      async (ctx, { fallBack }) => {
+        if (![1, 2, 3].includes(Number(ctx.body))) {
+          // fallBack('esa opcion no es vaida')
+          return fallBack()
+        }
+        else {
+          /** @type Number */
+          const userResponse = Number(ctx.body)
+          console.log(userResponse)
+        }
+      }
+    )
+    .addAnswer('Gracias por tu decision')
+);
+
+const prevFlow = (
+  bot.addKeyword(["anterior"])
+    .addAnswer('Abracadabra anterior')
+)
+
+
 // global flow
 exports.mainFlow = (
   bot.addKeyword(['hola', 'ole', 'alo', 'buenas', 'buenos dias', 'hey', 'buenas tardes', 'oye'], { sensitive: false })
@@ -11,13 +45,15 @@ exports.mainFlow = (
         '👉 *doc* para ver la documentación',
         '👉 *gracias*  para ver la lista de videos',
         '👉 *discord* unirte al discord',
+        '',
+        'escribe *siguiente*',
+        'escribe *anterior*',
+        'para ver los subflujos'
       ],
       null,
       null,
-      // [flowDocs, flowGracias, flowTuto, flowDiscord]
+      [prevFlow, nextFlow]
     )
-    .addAnswer('te envio un imagen', { media: 'https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg' })
-    .addAnswer('te envio un video', { media: 'https://www.youtube.com/watch?v=h42b6Tc7UmE' })
 );
 
 
@@ -38,8 +74,8 @@ exports.noteVoice = (
 );
 
 
-exports.flowString = (
-  bot.addKeyword('hola').addAnswer('Este mensaje envia tres botones', {
-    buttons: [{ body: 'Boton 1' }, { body: 'Boton 2' }, { body: 'Boton 3' }],
-  })
-);
+// exports.flowString = (
+//   bot.addKeyword('hola').addAnswer('Este mensaje envia tres botones', {
+//     buttons: [{ body: 'Boton 1' }, { body: 'Boton 2' }, { body: 'Boton 3' }],
+//   })
+// );
