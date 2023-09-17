@@ -14,7 +14,14 @@ exports.tiketsFlow = (
     .addAnswer(
       'Cual es tu nombre?',
 
-      { capture: true },
+      {
+        capture: true,
+        // buttons: [
+        //   {
+        //     body: 'cancelar'
+        //   }
+        // ]
+      },
 
       async (ctx, { fallBack, flowDynamic }) => {
         COSTUMER_DATA[ctx.from] = {
@@ -51,7 +58,9 @@ exports.tiketsFlow = (
     )
     .addAnswer(
       'Tu orden se esta procesando...',
+
       null,
+
       async (ctx, { fallBack, flowDynamic }) => {
         try {
           const { data } = (
