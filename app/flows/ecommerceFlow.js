@@ -37,7 +37,7 @@ exports.ecommerceFLow = (
     .addAnswer(
       [
         'Bienvenido a mi *restaurante*',
-        'Escribe: *ver* para ver productos'
+        'Escribe: *ver* para ver productos 0967590488'
       ],
       null,
       null,
