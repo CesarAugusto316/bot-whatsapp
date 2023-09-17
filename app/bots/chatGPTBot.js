@@ -1,4 +1,4 @@
-const { CoreClass } = require("@bot-whatsapp/bot");
+const { CoreClass, EVENTS } = require("@bot-whatsapp/bot");
 
 
 class ChatGPTBot extends CoreClass {
@@ -6,8 +6,9 @@ class ChatGPTBot extends CoreClass {
   queue = [];
   openAI;
 
+
   constructor(_dataBase, _provider) {
-    super(null, _dataBase, _provider);
+    super(null, _dataBase, _provider, { listEvents: EVENTS });
     this.init().then();
   }
 
@@ -16,12 +17,12 @@ class ChatGPTBot extends CoreClass {
     const { ChatGPTAPI } = await import('chatgpt');
 
     this.openAI = new ChatGPTAPI({
-      apiKey: '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'
+      apiKey: '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'
     });
   }
 
 
-  async handleMsg(ctx) {
+  handleMsg = async (ctx) => {
     if (!ctx.body) return
 
     // let prevMsg = await this.databaseClass.getPrevByNumber(ctx.from);
