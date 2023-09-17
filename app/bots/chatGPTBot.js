@@ -7,8 +7,8 @@ class ChatGPTBot extends CoreClass {
   openAI = undefined;
 
 
-  constructor(_dataBase, _provider) {
-    super(null, _dataBase, _provider, { listEvents: EVENTS });
+  constructor(_dataBase, _provider, _args = {}) {
+    super(null, _dataBase, _provider, { ..._args, listEvents: EVENTS });
     this.init().then();
   }
 
