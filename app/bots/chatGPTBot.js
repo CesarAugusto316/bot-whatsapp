@@ -17,7 +17,7 @@ class ChatGPTBot extends CoreClass {
     const { ChatGPTAPI } = await import('chatgpt');
 
     this.openAI = new ChatGPTAPI({
-      apiKey: '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'
+      apiKey: 'sk-iOUXVXOlYoSg8Of9aN8DT3BlbkFJ8PQmWbsnAmzfJ8n9bhkysc'
     });
   }
 
